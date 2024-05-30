@@ -3,8 +3,6 @@ import shutil
 
 source_dir = "C:/Users/brand/Downloads"
 
-files = os.listdir(source_dir)
-
 folder_names = {
     ".txt": "TextFiles",
     ".pdf": "PDFFiles",
@@ -16,15 +14,15 @@ folder_names = {
     ".pptx": "PowerPointFiles",
     ".mp4": "Videos",
     ".mp3": "Music",
-    ".wav" : "Music",
-    ".nki": "native instraments",
-    ".zip":"Zips",
-    ".rar":"Zips",
-    ".exe":"apps",
+    ".wav": "Music",
+    ".nki": "Native Instruments",
+    ".zip": "Zips",
+    ".rar": "Zips",
+    ".exe": "Apps",
     ".mid": "FLs",
-    ".iso":"image discs ISO",
-    ".torrent":"torrents",
-    ".fprg":"flowgorithm"
+    ".iso": "Image Discs ISO",
+    ".torrent": "Torrents",
+    ".fprg": "Flowgorithm"
 }
 
 for folder_name in folder_names.values():
@@ -32,22 +30,28 @@ for folder_name in folder_names.values():
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
 
-
 random_folder_path = os.path.join(source_dir, "Random Folders")
 if not os.path.exists(random_folder_path):
     os.makedirs(random_folder_path)
 
+files = os.listdir(source_dir)
 for file in files:
     if os.path.isfile(os.path.join(source_dir, file)):
-        _, exttension = os.path.splitext(file)
-        if exttension in folder_names:
+        _, extension = os.path.splitext(file)
+        if extension in folder_names:
             src_file_path = os.path.join(source_dir, file)
-            dest_folder_path = os.path.join(source_dir, folder_names[exttension])
+            dest_folder_path = os.path.join(source_dir, folder_names[extension])
             shutil.move(src_file_path, dest_folder_path)
         else:
             src_file_path = os.path.join(source_dir, file)
-            dest_folder_path = os.path.join(source_dir, "Random Folders", file)
+            dest_folder_path = os.path.join(random_folder_path, file)
             shutil.move(src_file_path, dest_folder_path)
 
+folders = [name for name in os.listdir(source_dir) if os.path.isdir(os.path.join(source_dir, name))]
+for folder in folders:
+    if folder not in folder_names.values() and folder != "Random Folders":
+        src_folder_path = os.path.join(source_dir, folder)
+        dest_folder_path = os.path.join(random_folder_path, folder)
+        shutil.move(src_folder_path, dest_folder_path)
 
-print("Files organized successfully!")
+print("Files and folders organized successfully!")
