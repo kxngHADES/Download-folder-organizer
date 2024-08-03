@@ -22,7 +22,7 @@ This Downloads Organizer is a desktop application that helps you organize files 
 1. **Clone the repository:**
 
    ```bash
-   [git clone https://github.com/kxngHADES/Download-folder-organizer.git]
+   git clone https://github.com/kxngHADES/Download-folder-organizer.git
    cd Download-folder-organizer
    ```
 
