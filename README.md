@@ -22,8 +22,8 @@ This Downloads Organizer is a desktop application that helps you organize files 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/downloads-organizer-gui.git
-   cd downloads-organizer-gui
+   [git clone https://github.com/kxngHADES/Download-folder-organizer.git]
+   cd Download-folder-organizer
    ```
 
 2. **Run the application:**
